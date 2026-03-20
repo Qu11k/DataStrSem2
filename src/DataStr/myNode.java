@@ -22,5 +22,11 @@ public class myNode {
 	public void setPreviousNode(myNode previousNode) {
 		PreviousNode = previousNode;
 	}
-	
+	public myNode(char element) {
+		setElement(element);
+	}
+	public String toString() {
+		return""+element;
+	}
+
 }
