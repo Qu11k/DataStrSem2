@@ -11,7 +11,7 @@ public int getHowManyElements() {
 public boolean isEmpty() {
 	return (howManyElements==0);
 }
-public boolean isFUll() {
+public boolean isFull() {
 	try{
 	myNode newNode =new myNode('a');
 	return false;
@@ -20,5 +20,22 @@ public boolean isFUll() {
 	return true;
 	}
 }
-
+public void add(char element) throws Exception {
+	if(isFull()) {
+		throw  new Exception("saraksts ir pilns nevar pievienot elementu");
+}
+if(howManyElements==0) {
+	myNode newNode=new myNode(element);
+	firstNode=newNode;
+	lastNode=newNode;
+	howManyElements++;
+}
+else {
+	myNode newNode=new myNode(element);
+	newNode.setPreviousNode(lastNode);
+	lastNode.setNextNode(newNode);
+	lastNode=newNode;
+	howManyElements++;
+}
+}
 }
