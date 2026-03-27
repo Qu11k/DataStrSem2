@@ -1,6 +1,6 @@
 package DataStr;
 
-public class MyLinkedList {
+public class MyLinkedList<Ttype> {
 private myNode firstNode=null;
 private myNode lastNode=null;
 private int howManyElements=0;
@@ -20,9 +20,12 @@ public boolean isFull() {
 	return true;
 	}
 }
-public void add(char element, int position) throws Exception {
+public void add(Ttype element, int position) throws Exception {
 	if (position < 0){
 		throw new Exception("pozicija nevar but mazaka par 0");
+	}
+	if(element == null) {
+		throw new Exception("Ievades elements nevar but null");
 	}
 	if (position > howManyElements){
 		throw new Exception("pozicija nevar but lielaka ka atlautais");
@@ -54,10 +57,13 @@ public void add(char element, int position) throws Exception {
 		nextNode.setPreviousNode(newNode);
 		howManyElements++;
 	}}
-	public void add(char element) throws Exception {
+	public void add(Ttype element) throws Exception {
 	if(isFull()) {
 		throw  new Exception("saraksts ir pilns nevar pievienot elementu");
 }
+	if(element == null) {
+		throw new Exception("Ievades elements nevar but null");
+	}
 if(howManyElements==0) {
 	myNode newNode=new myNode(element);
 	firstNode=newNode;
@@ -121,7 +127,7 @@ public void remove(int position) throws Exception {
 	}
 }
 
-public char get(int position) throws Exception {
+public Ttype get(int position) throws Exception {
 	if (isEmpty()) {
 		throw (new Exception("saraksts tuks"));
 	}
@@ -135,15 +141,19 @@ public char get(int position) throws Exception {
 	    for (int i = 1; i <= position; i++) {
 	        currentNode = currentNode.getNextNode();
 	    }
-	    return currentNode.getElement();
+	    return (Ttype)currentNode.getElement();
 }
-public int search(char element) throws Exception {
+public int search(Ttype element) throws Exception {
 	if (isEmpty()) {
 		throw (new Exception("saraksts tuks"));}
+	
+	if(element == null) {
+		throw new Exception("Ievades elements nevar but null");
+	}
 	int foundPosition=0;
 	myNode currentNode=firstNode;
 	while(currentNode!=null) {
-		if(currentNode.getElement()==element) {
+		if(currentNode.getElement().equals(element)) {
 			return foundPosition;
 		}
 		foundPosition++;

@@ -5,7 +5,7 @@ public class myNode<Ttype> {
 	private myNode NextNode = null;
 	private myNode PreviousNode = null;
 
-	public char getElement() {
+	public Ttype getElement() {
 		return element;
 	}
 
