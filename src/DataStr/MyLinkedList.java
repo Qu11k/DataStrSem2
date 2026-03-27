@@ -13,14 +13,48 @@ public boolean isEmpty() {
 }
 public boolean isFull() {
 	try{
-	myNode newNode =new myNode('a');
+	myNode newNode = new myNode('a');
 	return false;
 	}
 	catch(OutOfMemoryError error)  {
 	return true;
 	}
 }
-public void add(char element) throws Exception {
+public void add(char element, int position) throws Exception {
+	if (position < 0){
+		throw new Exception("pozicija nevar but mazaka par 0");
+	}
+	if (position > howManyElements){
+		throw new Exception("pozicija nevar but lielaka ka atlautais");
+	}
+	if (position == 0){
+		myNode newNode= new myNode(element);
+		firstNode.setPreviousNode(newNode);
+		newNode.setNextNode(firstNode);
+		firstNode=newNode;
+		howManyElements++;
+	}
+	else if (position == howManyElements) {
+		add(element);
+	}
+	
+	else {
+		myNode currentNode=firstNode;//TODO noskaidrot kura pozicija tuvak sakumam vai beigam ir jaievieto bloks
+		for(int i = 1;i<position;i++) {
+			currentNode = currentNode.getNextNode();
+		}
+		myNode previousNode = currentNode;
+		myNode nextNode=currentNode.getNextNode();
+		
+		myNode newNode=new myNode(element);
+		
+		newNode.setPreviousNode(previousNode);
+		previousNode.setNextNode(newNode);
+		newNode.setNextNode(nextNode);
+		nextNode.setPreviousNode(newNode);
+		howManyElements++;
+	}}
+	public void add(char element) throws Exception {
 	if(isFull()) {
 		throw  new Exception("saraksts ir pilns nevar pievienot elementu");
 }
@@ -37,7 +71,7 @@ else {
 	lastNode=newNode;
 	howManyElements++;
 }
-}
+	}
 public void print() throws Exception{
 	if (isEmpty()) {
 		throw (new Exception("saraksts tuks"));
