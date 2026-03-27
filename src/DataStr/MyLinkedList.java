@@ -84,4 +84,42 @@ public void print() throws Exception{
 
 	System.out.println();
 }
+public void remove(int position) throws Exception {
+	if (isEmpty()) {
+		throw (new Exception("saraksts tuks"));
+	}
+	if (position < 0){
+		throw new Exception("pozicija nevar but mazaka par 0");
+	}
+	if (position >= howManyElements){
+		throw new Exception("pozicija nevar but lielaka ka atlautais");}
+	if (position==0) {
+		myNode newFirstNode = firstNode.getNextNode();
+		newFirstNode.setPreviousNode(null);
+		firstNode=newFirstNode;
+		howManyElements--;
+	}
+	else if (position==howManyElements-1) {
+		myNode newLastNode=lastNode.getPreviousNode();
+		newLastNode.setNextNode(null);
+		lastNode=newLastNode;
+		howManyElements--;
+		
+	}
+	else {
+		myNode currentNode=firstNode;
+		for(int i = 1; i < position;i++) {
+			currentNode=currentNode.getNextNode();
+		}
+		myNode newLeftNode=currentNode;
+		myNode newRightNode=currentNode.getNextNode().getNextNode();
+		
+		newLeftNode.setNextNode(newRightNode);
+		newRightNode.setPreviousNode(newLeftNode);
+		
+		howManyElements--;
+	}
+	
+	
+}
 }
