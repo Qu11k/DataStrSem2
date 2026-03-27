@@ -152,4 +152,10 @@ public int search(char element) throws Exception {
 	throw new Exception("mekletais elements saraksta neeksiste");
 	
 }
+public void makeEmpty() {
+	firstNode=null;
+	lastNode=null;
+	howManyElements=0;
+	System.gc();
+}
 }
