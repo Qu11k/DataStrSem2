@@ -1,7 +1,7 @@
 package DataStr;
 
-public class myNode {
-	private char element;
+public class myNode<Ttype> {
+	private Ttype element;
 	private myNode NextNode = null;
 	private myNode PreviousNode = null;
 
@@ -9,7 +9,7 @@ public class myNode {
 		return element;
 	}
 
-	public void setElement(char element) {
+	public void setElement(Ttype element) {
 		this.element = element;
 	}
 
@@ -29,7 +29,13 @@ public class myNode {
 		PreviousNode = previousNode;
 	}
 
-	public myNode(char element) {
+	public myNode(Ttype element) {
+		if (element!=null) {
+			this.element=element;
+		}
+		else {
+			this.element=((Ttype) new Object());
+		}
 		setElement(element);
 	}
 
