@@ -24,6 +24,8 @@ public class MainService {
 			symbols.remove(3);
 			symbols.print();
 			System.out.println(symbols.get(2));
+			System.out.println(symbols.search('B'));
+			System.out.println(symbols.search('m'));
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 

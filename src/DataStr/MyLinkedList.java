@@ -137,4 +137,19 @@ public char get(int position) throws Exception {
 	    }
 	    return currentNode.getElement();
 }
+public int search(char element) throws Exception {
+	if (isEmpty()) {
+		throw (new Exception("saraksts tuks"));}
+	int foundPosition=0;
+	myNode currentNode=firstNode;
+	while(currentNode!=null) {
+		if(currentNode.getElement()==element) {
+			return foundPosition;
+		}
+		foundPosition++;
+		currentNode=currentNode.getNextNode();
+	}
+	throw new Exception("mekletais elements saraksta neeksiste");
+	
+}
 }
