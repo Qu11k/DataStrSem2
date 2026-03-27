@@ -119,7 +119,22 @@ public void remove(int position) throws Exception {
 		
 		howManyElements--;
 	}
-	
-	
+}
+
+public char get(int position) throws Exception {
+	if (isEmpty()) {
+		throw (new Exception("saraksts tuks"));
+	}
+	if (position < 0){
+		throw new Exception("pozicija nevar but mazaka par 0");
+	}
+	if (position >= howManyElements){
+		throw new Exception("pozicija nevar but lielaka ka atlautais");
+		}
+	 myNode currentNode = firstNode;
+	    for (int i = 1; i <= position; i++) {
+	        currentNode = currentNode.getNextNode();
+	    }
+	    return currentNode.getElement();
 }
 }

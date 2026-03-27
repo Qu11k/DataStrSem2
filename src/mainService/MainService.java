@@ -23,6 +23,7 @@ public class MainService {
 			symbols.print();
 			symbols.remove(3);
 			symbols.print();
+			System.out.println(symbols.get(2));
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 
